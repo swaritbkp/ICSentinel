@@ -40,9 +40,10 @@ with st.sidebar:
         st.rerun()
     st.divider()
     st.markdown("**API Status**")
-    av_key = os.getenv("ALPHA_VANTAGE_KEY", "")
-    fh_key = os.getenv("FINNHUB_KEY", "")
-    or_key = os.getenv("OPENROUTER_KEY", "")
+av_key = st.secrets.get("ALPHA_VANTAGE_KEY", os.getenv("ALPHA_VANTAGE_KEY", ""))
+fh_key = st.secrets.get("FINNHUB_KEY", os.getenv("FINNHUB_KEY", ""))
+or_key = st.secrets.get("OPENROUTER_KEY", os.getenv("OPENROUTER_KEY", ""))
+  
     st.markdown(f"Alpha Vantage: {'✅' if av_key and av_key != 'demo' else '⚠️ Set key in .env'}")
     st.markdown(f"Finnhub: {'✅' if fh_key else '⚠️ Set key in .env'}")
     st.markdown(f"OpenRouter: {'✅' if or_key else '⚠️ Set key in .env'}")
